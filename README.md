@@ -93,11 +93,11 @@ You can customize your FastAPI and MongoDB project further by modifying the gene
 
 ## Contributors
 
-- Nelson Roque, PhD | nelsonroquejr@gmail.com
+Nelson Roque, PhD: `nelsonroquejr@gmail.com`
 
 ## License
 
-This project is licensed under the [License Name] - see the LICENSE file for details.
+This project is licensed under the MIT Licene - see the `LICENSE` file for details.
 
 ## Deployment Options
 
