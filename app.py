@@ -23,7 +23,7 @@ async def lifespan(app: fastapi.FastAPI):
     print("Startup event", get_utc_timestamp())
     yield
     print("Startup event", get_utc_timestamp())
-    # # Load the ML model
+    # TODO: add timestamp to request state and uuid
     # request.state.start_time = get_utc_timestamp()
     # yield
     # request.state.end_time = get_utc_timestamp()
