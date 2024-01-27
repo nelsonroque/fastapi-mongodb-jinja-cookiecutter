@@ -22,8 +22,12 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {% for post in posts %}
                 <div class="post-card p-4">
-                    <h2 class="text-xl font-semibold mb-2 accent-color">{{ post.title }}</h2>
+                    <h2 class="text-3xl font-semibold mb-2 accent-color">{{ post.title }}</h2>
                     <p class="text-gray-600">{{ post.content }}</p>
+                    <br class="mb-60">
+                    <span class="bg-blue-500 text-white text-xs font-semibold mr-2 px-2.5 py-0.5 rounded">
+                        #WatchThis
+                    </span>
                 </div>
             {% endfor %}
         </div>

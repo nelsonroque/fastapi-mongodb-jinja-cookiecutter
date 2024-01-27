@@ -6,8 +6,8 @@ from uvicorn.config import LOGGING_CONFIG
 from contextlib import asynccontextmanager
 
 # Import custom modules ---
-from lib.config import config
-from lib.utils import get_utc_timestamp
+from core.config import config
+from core.utils import get_utc_timestamp
 
 # Import routers ---
 from routers.ui import router as ui_router
