@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Response, Body, Depends, Request
 import datetime
-from core.responses import PrettyJSONResponse
+from ..core.responses import PrettyJSONResponse
 
 # =============================================================================
 

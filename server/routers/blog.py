@@ -1,9 +1,9 @@
 from fastapi import APIRouter, Response, Body, Depends, Request, status
 from fastapi.templating import Jinja2Templates
-
-from core.models import Post, Posts, Status
-from core.storage import init_db, DuplicateKeyError
 from bson.objectid import ObjectId
+
+from ..core.models import Post, Posts, Status
+from ..core.storage import init_db, DuplicateKeyError
 
 # =============================================================================
 

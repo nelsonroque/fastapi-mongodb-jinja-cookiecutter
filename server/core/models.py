@@ -1,7 +1,7 @@
 from pydantic import BaseModel, Field
 from typing import List, Optional
-from core.utils import get_utc_timestamp, gen_uid#, get_current_month, get_current_day, get_current_year
 from datetime import datetime, timezone
+from .utils import get_utc_timestamp, gen_uid#, get_current_month, get_current_day, get_current_year
 
 # class DocumentIds(BaseModel):
 #     id: Optional[str] = Field(default_factory=gen_uid)
