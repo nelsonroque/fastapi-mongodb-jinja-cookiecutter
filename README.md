@@ -60,35 +60,45 @@ Make sure you have the following prerequisites installed on your system:
 ## Project Structure
 
 The generated project will typically have a structure similar to the following:
+Make sure to double check your `.env` file.
 
 ```
 <project_name>/
-│
-├── app/
-│   ├── api/
-│   │   ├── __init__.py
-│   │   ├── v1/
-│   │   │   ├── __init__.py
-│   │   │   └── main.py
-│   │   └── v2/
-│   │       ├── __init__.py
-│   │       └── main.py
-│   ├── core/
-│   ├── db/
-│   │   ├── __init__.py
-│   │   ├── base.py
-│   │   └── session.py
-│   ├── models/
-│   │   ├── __init__.py
-│   │   └── item.py
-│   ├── main.py
-│   └── settings.py
-│
-├── tests/
+├── LICENSE
 ├── .env
-├── .gitignore
 ├── README.md
-└── requirements.txt
+├── app.py
+├── apprunner.yaml
+├── cookiecutter.json
+├── core
+│   ├── __pycache__
+│   ├── config.py
+│   ├── emails.py
+│   ├── files.py
+│   ├── log.py
+│   ├── models.py
+│   ├── responses.py
+│   ├── storage.py
+│   └── utils.py
+├── create_env.sh
+├── requirements.txt
+├── routers
+│   ├── __init__.py
+│   ├── __pycache__
+│   ├── blog.py
+│   ├── devops.py
+│   ├── health.py
+│   └── ui.py
+├── scripts
+│   └── seed_db.py
+├── start.sh
+├── static
+│   ├── logo.png
+│   └── style.css
+├── templates
+│   ├── blog.html
+│   └── home.html
+└── vercel.json
 ```
 
 This structure is designed to help you get started quickly with your FastAPI and MongoDB project.
@@ -114,7 +124,8 @@ This project is licensed under the MIT Licene - see the `LICENSE` file for detai
 
 # Roadmap
 
-- Adding logguru
 - Handling all lingering TOODs
+- Fixing logging config
 - Update `seed_db.py` to have Pydantic support
 - Move collection names to config.py (and .env)
+- Add Aggregation Pipeline endpoints

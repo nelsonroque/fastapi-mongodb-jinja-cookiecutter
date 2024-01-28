@@ -1,7 +1,7 @@
 from pydantic import BaseModel, Field
 from typing import List, Optional
 from core.utils import get_utc_timestamp#, get_current_month, get_current_day, get_current_year
-import datetime
+from datetime import datetime, timezone
 
 # class DocumentIds(BaseModel):
 #     id: Optional[str] = Field(default_factory=gen_uid)
@@ -15,7 +15,7 @@ import datetime
 
 # Specify the schema for the Post model
 class Post(BaseModel):#, TimestampIds):
-    #created_utc: datetime = Field(default_factory=get_utc_timestamp)
+    created_utc: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
     title: str
     description: str
     body: str

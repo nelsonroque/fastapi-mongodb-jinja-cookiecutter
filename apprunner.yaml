@@ -9,6 +9,6 @@ build:
     - name: PORT
       value: "8080"
 run:
-  command: python app.py # command to run fastapi
+  command: python app/app.py # command to run fastapi
   network:
     port: 8080 # port AppRunner will expose

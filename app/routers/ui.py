@@ -17,9 +17,10 @@ async def render_frontend():
     return HTMLResponse("<h1>Hello</h1>", status_code=200)
 
 
-# @router.get("/homepage")
-# async def render_frontend(request: Request):
-#     return templates.TemplateResponse("home.html", {"request": request})
+@router.get("/homepage")
+async def render_frontend(request: Request):
+    # {% for post in posts %} {% endfor %}
+    return templates.TemplateResponse("home.html", {"request": request})
 
 # load dashboard for admins ---
 @router.get("/blog")

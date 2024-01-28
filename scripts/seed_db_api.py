@@ -1,15 +1,17 @@
 import requests
+import uuid
 
 url = "http://0.0.0.0:8000/blog"
 
 # generate 1000 posts
+# TODO: add loreum ipsum support (or faker)
 for i in range(1, 1000):
     payload = {
         "title": "string_{}".format(i),
         "description": "string",
         "body": "string",
         "author_id": "string",
-        "slug": "string_{}".format(i),
+        "slug": str(uuid.uuid4()),
         "tags": ["string"],
         "published": True
     }
