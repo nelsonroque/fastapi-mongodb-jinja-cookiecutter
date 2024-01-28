@@ -1,21 +1,19 @@
 # Import FastAPI and other modules ---
 import fastapi
 from fastapi.staticfiles import StaticFiles
-import uvicorn
-from uvicorn.config import LOGGING_CONFIG
 from contextlib import asynccontextmanager
 
 # Import custom modules ---
-from core.config import config
-from core.utils import get_utc_timestamp, uuid
-from core.log import logger
-from core.storage import create_index
+from .core.config import config
+from .core.utils import get_utc_timestamp, uuid
+from .core.log import logger
+from .core.storage import create_index
 
 # Import routers ---
-from routers.ui import router as ui_router
-from routers.blog import router as blog_router
-from routers.health import router as healthcheck_router
-from routers.devops import router as devops_router
+from .routers.ui import router as ui_router
+from .routers.blog import router as blog_router
+from .routers.health import router as healthcheck_router
+from .routers.devops import router as devops_router
 
 # =============================================================================
 
@@ -53,7 +51,6 @@ async def log_requests(request: fastapi.Request, call_next):
     response.headers['X-Request-End-Time'] = str(request_end_time)
     response.headers['X-Time-Elapsed-Seconds'] = f"{time_elapsed}"
 
-
     return response
 
 # =============================================================================
@@ -72,12 +69,3 @@ app.include_router(devops_router)
 @app.get("/")
 async def root():
     return {"message": "Hello World"}
-
-# =============================================================================
-
-# --- Run the server ---
-if __name__ == "__main__":
-    LOGGING_CONFIG["formatters"]["default"]["fmt"] = "[%(asctime)s] [%(name)s] [%(levelprefix)s] [%(funcName)s] [%(lineno)d] [%(message)s]"
-    uvicorn.run(app, host="0.0.0.0", port=8001, log_level="info")
-
-# =============================================================================
