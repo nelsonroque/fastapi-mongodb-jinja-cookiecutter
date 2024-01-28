@@ -6,4 +6,4 @@ pymongo
 jinja2
 pandas
 requests
-loguru
+pyyaml

@@ -1,0 +1,334 @@
+{
+  "openapi": "3.1.0",
+  "info": { "title": "Blog", "version": "0.0.1" },
+  "paths": {
+    "/blog": {
+      "get": {
+        "summary": "Read All Blogs",
+        "operationId": "read_all_blogs_blog_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "503": { "description": "Service Unavailable" }
+        }
+      },
+      "post": {
+        "summary": "Create Blog",
+        "operationId": "create_blog_blog_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/Post" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "503": { "description": "Service Unavailable" },
+          "409": { "description": "Conflict" },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/blog/id/{id}": {
+      "get": {
+        "summary": "Read Blog By Id",
+        "operationId": "read_blog_by_id_blog_id__id__get",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "title": "Id" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "503": { "description": "Service Unavailable" },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/blog/slug/{slug}": {
+      "get": {
+        "summary": "Read Blog By Slug",
+        "operationId": "read_blog_by_slug_blog_slug__slug__get",
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "title": "Slug" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "503": { "description": "Service Unavailable" },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/blog/{id}": {
+      "put": {
+        "summary": "Update Blog",
+        "operationId": "update_blog_blog__id__put",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "title": "Id" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/Post" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "503": { "description": "Service Unavailable" },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete Blog",
+        "operationId": "delete_blog_blog__id__delete",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "title": "Id" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "503": { "description": "Service Unavailable" },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/health/": {
+      "get": {
+        "tags": ["health"],
+        "summary": "Check Health",
+        "operationId": "check_health_health__get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "type": "string" } }
+            }
+          },
+          "404": { "description": "Not found" }
+        }
+      }
+    },
+    "/ui/test": {
+      "get": {
+        "tags": ["ui"],
+        "summary": "Render Frontend",
+        "operationId": "render_frontend_ui_test_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          }
+        }
+      }
+    },
+    "/ui/homepage": {
+      "get": {
+        "tags": ["ui"],
+        "summary": "Render Frontend",
+        "operationId": "render_frontend_ui_homepage_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          }
+        }
+      }
+    },
+    "/ui/blog": {
+      "get": {
+        "tags": ["ui"],
+        "summary": "Get All Blogs",
+        "operationId": "get_all_blogs_ui_blog_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          }
+        }
+      }
+    },
+    "/devops/indexes/{collection}/{field}": {
+      "get": {
+        "tags": ["devops"],
+        "summary": "Create Unique Index",
+        "operationId": "create_unique_index_devops_indexes__collection___field__get",
+        "parameters": [
+          {
+            "name": "collection",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "title": "Collection" }
+          },
+          {
+            "name": "field",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "title": "Field" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "type": "string" } }
+            }
+          },
+          "404": { "description": "Not found" },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/": {
+      "get": {
+        "summary": "Root",
+        "operationId": "root__get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": { "$ref": "#/components/schemas/ValidationError" },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "Post": {
+        "properties": {
+          "created_utc": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Created Utc"
+          },
+          "title": { "type": "string", "title": "Title" },
+          "description": { "type": "string", "title": "Description" },
+          "body": { "type": "string", "title": "Body" },
+          "author_id": { "type": "string", "title": "Author Id" },
+          "slug": { "type": "string", "title": "Slug" },
+          "tags": {
+            "items": { "type": "string" },
+            "type": "array",
+            "title": "Tags"
+          },
+          "published": { "type": "boolean", "title": "Published" }
+        },
+        "type": "object",
+        "required": [
+          "title",
+          "description",
+          "body",
+          "author_id",
+          "slug",
+          "tags",
+          "published"
+        ],
+        "title": "Post"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": { "anyOf": [{ "type": "string" }, { "type": "integer" }] },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": { "type": "string", "title": "Message" },
+          "type": { "type": "string", "title": "Error Type" }
+        },
+        "type": "object",
+        "required": ["loc", "msg", "type"],
+        "title": "ValidationError"
+      }
+    }
+  }
+}

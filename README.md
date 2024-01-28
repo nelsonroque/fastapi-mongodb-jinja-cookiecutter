@@ -107,6 +107,15 @@ This structure is designed to help you get started quickly with your FastAPI and
 
 You can customize your FastAPI and MongoDB project further by modifying the generated code and configuration files as needed. Refer to the FastAPI documentation and MongoDB documentation for more information on how to work with these technologies.
 
+## Supporting Code-Generation for Client Libraries
+
+`extract-openapi.py` = Get the OpenAPI spec for usage in building client libraries
+  Example usage: ` python extract-openapi.py app.app:app --app-dir app`
+
+  `https://openapi-generator.tech/docs/installation`
+  `brew install openapi-generator`
+  `openapi-generator generate -i openapi.json -g python -o ~/Desktop/`
+
 ## Contributors
 
 Nelson Roque, PhD: `nelsonroquejr@gmail.com`

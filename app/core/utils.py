@@ -2,6 +2,7 @@ from datetime import datetime
 import pytz
 import uuid
 import hashlib
+import uuid
 
 def gen_uid(len=10):
     """

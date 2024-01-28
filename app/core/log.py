@@ -5,8 +5,3 @@ import logging
 # Configure the logger as needed
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
-
-def fancy_print(msg):
-    print("((((((((((((((((((((((((((((((((((((************************))))))))))))))))))))))))))))))))))))))")
-    print(f"{msg}")
-    print("((((((((((((((((((((((((((((((((((((************************))))))))))))))))))))))))))))))))))))))")

@@ -7,8 +7,9 @@ from contextlib import asynccontextmanager
 
 # Import custom modules ---
 from core.config import config
-from core.utils import get_utc_timestamp
+from core.utils import get_utc_timestamp, uuid
 from core.log import logger
+from core.storage import create_index
 
 # Import routers ---
 from routers.ui import router as ui_router
@@ -32,7 +33,7 @@ app = fastapi.FastAPI(
 @app.middleware("http")
 # TODO: log to database
 async def log_requests(request: fastapi.Request, call_next):
-    import uuid
+    create_index("blogs", "slug")
     request_id = uuid.uuid4()
     request_start_time = get_utc_timestamp()
 

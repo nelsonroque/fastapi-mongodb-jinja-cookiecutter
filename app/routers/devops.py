@@ -1,9 +1,7 @@
 from fastapi import APIRouter, Response, Body, Depends, Request
 import datetime
 from core.responses import PrettyJSONResponse
-from core.storage import init_db
-from pymongo import ASCENDING
-
+from core.storage import init_db, ASCENDING
 
 # =============================================================================
 
