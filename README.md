@@ -111,3 +111,4 @@ This project is licensed under the MIT Licene - see the `LICENSE` file for detai
    - Adding logguru
    - Handling all lingering TOODs
    - Update `seed_db.py` to have Pydantic support
+   - Move collection names to config.py (and .env)

@@ -3,6 +3,72 @@ import pytz
 import uuid
 import hashlib
 
+def gen_uid(len=10):
+    """
+    
+    A function to generate a short string (like the end of a bit.ly link that is letters (both lower and uppercase and numbers))
+    
+    """
+    # Generate a UUID and convert it to a string
+    uid = str(uuid.uuid4())
+
+    # Remove the hyphens from the UUID string
+    uid = uid.replace("-", "")
+
+    # Return the last 10 characters of the UUID string
+    return uid[-len:]
+
+def get_current_month():
+    """
+    
+    A function to get the current month.
+    
+    """
+    # Get the current time in your local timezone
+    local_time = datetime.now()
+
+    # Convert the local time to UTC
+    utc_time = local_time.astimezone(pytz.utc)
+
+    # Get the current month
+    current_month = utc_time.month
+
+    return current_month
+
+def get_current_day():
+    """
+    
+    A function to get the current day.
+    
+    """
+    # Get the current time in your local timezone
+    local_time = datetime.now()
+
+    # Convert the local time to UTC
+    utc_time = local_time.astimezone(pytz.utc)
+
+    # Get the current day
+    current_day = utc_time.day
+
+    return current_day
+
+def get_current_year():
+    """
+    
+    A function to get the current year.
+    
+    """
+    # Get the current time in your local timezone
+    local_time = datetime.now()
+
+    # Convert the local time to UTC
+    utc_time = local_time.astimezone(pytz.utc)
+
+    # Get the current year
+    current_year = utc_time.year
+
+    return current_year
+
 def get_utc_timestamp():
     """
     

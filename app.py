@@ -13,7 +13,7 @@ from core.utils import get_utc_timestamp
 from routers.ui import router as ui_router
 from routers.blog import router as blog_router
 from routers.health import router as healthcheck_router
-
+from routers.devops import router as devops_router
 
 # =============================================================================
 
@@ -53,6 +53,7 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 app.include_router(blog_router)
 app.include_router(healthcheck_router)
 app.include_router(ui_router)
+app.include_router(devops_router)
 
 # =============================================================================
 

@@ -1,56 +1,107 @@
 from fastapi import APIRouter, Response, Body, Depends, Request
 from fastapi.templating import Jinja2Templates
 
+from core.models import Post, Posts
+from core.storage import init_db
+from bson.objectid import ObjectId
+
 # =============================================================================
 
 # --- create router ---
 router = APIRouter()
-templates = Jinja2Templates(directory="templates")
 
 # =============================================================================
 
+# --- CRUD operations for blog posts ---
 
-# load dashboard for admins ---
+# (C)reate blog post
+@router.post("/blog")
+def create_blog(blog: Post):
+    client, db = init_db()
+    collection = db["blogs"]
+    try:
+        r = collection.insert_one(blog.model_dump())
+        return {"status": "ok", "id": r.inserted_id}
+    except Exception as e:
+        return {"status": "error", "error": str(e)}
+    
+# =============================================================================
+
+# (R)ead single blog
+@router.get("/blog/id/{id}")
+def read_blog_by_id(id: str):
+    client, db = init_db()
+    collection = db["blogs"]
+    try:
+        # Retrieve a single document
+        document = collection.find_one({"_id": ObjectId(id)})
+        if document:
+            # Convert ObjectId to string and adapt document for Pydantic model
+            document["_id"] = str(document["_id"])
+            return Post(**document)
+        else:
+            return {"status": "not found"}
+    except Exception as e:
+        return {"status": "error", "error": str(e)}
+    
+@router.get("/blog/slug/{slug}")
+def read_blog_by_slug(slug: str):
+    client, db = init_db()
+    collection = db["blogs"]
+    try:
+        # Retrieve a single document
+        document = collection.find_one({"slug": slug})
+        if document:
+            # Convert ObjectId to string and adapt document for Pydantic model
+            document["_id"] = str(document["_id"])
+            return Post(**document)
+        else:
+            return {"status": "not found"}
+    except Exception as e:
+        return {"status": "error", "error": str(e)}
+    
+# (R)ead all blogs
 @router.get("/blog")
-async def get_all_blogs(request: Request):
-    # TODO read from DB
-    posts = [
-        {
-            "title": "Blog 1",
-            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-        },
-        {
-            "title": "Blog 2",
-            "content": "Fusce euismod lectus in enim feugiat, a posuere sapien sollicitudin.",
-        },
-        {
-            "title": "Blog 3",
-            "content": "Vestibulum hendrerit enim eget neque lacinia, non tincidunt purus dignissim.",
-        },
-        {
-            "title": "Blog 4",
-            "content": "Pellentesque vel nunc at neque ultrices rhoncus.",
-        },
-        {
-            "title": "Blog 5",
-            "content": "Aliquam id justo at leo eleifend viverra nec nec ex.",
-        },
-        {
-            "title": "Blog 6",
-            "content": "Aenean in arcu ut elit vehicula volutpat nec nec odio.",
-        },
-        {"title": "Blog 7", "content": "Sed eget velit a erat pellentesque interdum."},
-        {
-            "title": "Blog 8",
-            "content": "Phasellus cursus tortor a consectetur sodales.",
-        },
-        {
-            "title": "Blog 9",
-            "content": "Cras euismod nunc vel urna ullamcorper, a scelerisque libero congue.",
-        },
-        {"title": "Blog 10", "content": "Quisque consequat urna at aliquam tincidunt."},
-    ]
-    return templates.TemplateResponse("blog.html", {"posts": posts, "request": request})
+def read_all_blogs():
+    client, db = init_db()
+    collection = db["blogs"]
+    try:
+        # Retrieve a single document
+        documents = list(collection.find({}))
+        posts_list = []
+        for doc in documents:
+            # Convert ObjectId to string
+            doc['_id'] = str(doc['_id'])
+            posts_list.append(Post(**doc))
 
+        # Create and return the Posts object
+        return Posts(posts=posts_list)
+
+    except Exception as e:
+        return {"status": "error", "error": str(e)}
 
 # =============================================================================
+    
+# (U)pdate blog post
+@router.put("/blog/{id}")
+def update_blog(id: str, blog: Post):
+    client, db = init_db()
+    collection = db["blogs"]
+    try:
+        r = collection.update_one({"_id": ObjectId(id)}, {"$set": blog.model_dump()})
+        return {"status": "ok", "matched_count": r.matched_count, "modified_count": r.modified_count}
+    except Exception as e:
+        return {"status": "error", "error": str(e)}
+
+# =============================================================================
+  
+# (D)elete blog post
+@router.delete("/blog/{id}")
+def delete_blog(id: str):
+    client, db = init_db()
+    collection = db["blogs"]
+    try:
+        r = collection.delete_one({"_id": ObjectId(id)})
+        return {"status": "ok", "deleted_count": r.deleted_count}
+    except Exception as e:
+        return {"status": "error", "error": str(e)}
