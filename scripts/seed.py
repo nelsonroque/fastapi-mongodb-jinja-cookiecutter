@@ -1,5 +1,5 @@
 import uuid
-from storage import init_db
+from ..server.core.storage import init_db
 
 url = "http://0.0.0.0:8000/blog"
 
