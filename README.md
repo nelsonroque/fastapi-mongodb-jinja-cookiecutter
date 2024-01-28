@@ -113,14 +113,14 @@ You can customize your FastAPI and MongoDB project further by modifying the gene
 
 1. Extract the OpenAPI spec programmatically (or manually) from FastAPI app.
 `extract-openapi.py` = Get the OpenAPI spec for usage in building client libraries
-  Example usage: ` python extract-openapi.py app.app:app --app-dir app`
+  Example usage: `python code-gen/extract-openapi.py app.app:app --app-dir app/`
 
 2. Generate a client in the language of your choice. For installation information about OpenAPI's Code Generation tool, visit: `https://openapi-generator.tech/docs/installation`
 
 For Mac Users: `brew install openapi-generator`
 
 ### Generate a Python Client
-  `openapi-generator generate -i openapi.json -g python -o ~/Desktop/`
+`openapi-generator generate -i openapi.json -g python -o ~/Desktop/`
 
 ### Generate an R Client
 `openapi-generator generate -i openapi.json -g r -o ~/Desktop/`
