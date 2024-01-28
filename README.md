@@ -1,5 +1,11 @@
 # FastAPI and MongoDB Cookiecutter Template
- A Cookiecutter template for FastAPI + MongoDB + Jinja2
+
+A Cookiecutter template for FastAPI + MongoDB + Jinja2
+
+# Quick Start
+
+`create_env.sh` - create the venv
+`start.sh` - start the server
 
 # How It Works
 
@@ -11,15 +17,15 @@ Make sure you have the following prerequisites installed on your system:
 
 - Cookiecutter - A command-line utility that creates projects from templates.
 
-   ```
-   pip3 install cookiecutter
-   ```
-   
+  ```
+  pip3 install cookiecutter
+  ```
+
 - Git - Version control system.
 
-   ```
-   https://git-scm.com/
-   ```
+  ```
+  https://git-scm.com/
+  ```
 
 ## Usage
 
@@ -47,7 +53,7 @@ Make sure you have the following prerequisites installed on your system:
    cd <project_name>
    ```
 
-6. You can now set up your virtual environment, install the project dependencies, and start developing your FastAPI application with MongoDB as the database. We've added helper scripts for this. 
+6. You can now set up your virtual environment, install the project dependencies, and start developing your FastAPI application with MongoDB as the database. We've added helper scripts for this.
    `create_env.sh` - to create the virtual environment
    `start.sh` - to start the Uvicorn server
 
@@ -102,13 +108,13 @@ This project is licensed under the MIT Licene - see the `LICENSE` file for detai
 ## Deployment Options
 
 - Vercel
-  - For customizations  see `vercel.json`
-- AWS AppRunner 
-  - For customizations  see `apprunner.yaml`and this resource for more information: ()
+  - For customizations see `vercel.json`
+- AWS AppRunner
+  - For customizations see `apprunner.yaml`and this resource for more information: ()
 
 # Roadmap
 
-   - Adding logguru
-   - Handling all lingering TOODs
-   - Update `seed_db.py` to have Pydantic support
-   - Move collection names to config.py (and .env)
+- Adding logguru
+- Handling all lingering TOODs
+- Update `seed_db.py` to have Pydantic support
+- Move collection names to config.py (and .env)
